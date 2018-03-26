@@ -3,6 +3,8 @@ const bodyparser = require("body-parser")
 const hbs = require('hbs')
 var app = express()
 
+const port = process.env.PORT || 8080
+
 const geocode = require("./private/week7stuff.js")
 
 
@@ -36,13 +38,12 @@ hbs.registerHelper('getRandomTitle', ()=>{
 })
 app.use(bodyparser.json())
 
-app.use((request,response,next)=>{
+/*app.use((request,response,next)=>{
 	var time = new Date().toString()
 	console.log(request)
 	console.log(`${time}: ${request.method} ${request.url}`) //Not quotations.
-	response.redirect("/404")
 	next();
-})
+})*/
 
 
 app.get("/", (request, response) => {
@@ -83,6 +84,6 @@ app.post("/resources", (request, response) => {
 })
 
 
-app.listen(8080, () => {
-    console.log("Server Up")
+app.listen(port, () => {
+    console.log("Server Up in " + port)
 });
