@@ -65,6 +65,9 @@ app.get('/info', (request, response) => {
     })
 })
 
+app.get("/randomwebsite", (request, response)=>{
+    response.sendFile(__dirname + "/scare.html")
+})
 app.get("/404", (request, response) => {
     response.send("This is a non-existent page, maybe in the Deep Web??")
 })
